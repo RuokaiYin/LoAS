@@ -1,0 +1,89 @@
+
+
+Simulating Layer_1
+tot_cycs: 8866.0
+tot_comps: 83302.0
+sram_traffic_w: 81.9453125 KB
+sram_traffic_x: 42.74951171875 KB
+dram_traffic_w: 40.97265625 KB
+dram_traffic_x: 2.07470703125 KB
+dram_traffic_o: 2.07470703125 KB
+sram_traffic_wb: 108.0 KB
+dram_traffic_wb: 54.0 KB
+sram_traffic_xb: 31.5 KB
+dram_traffic_xb: 9.0 KB
+hit_w: 41836
+hit_x: 25474
+miss_w: 120
+miss_x: 20
+total_dram: 108.1220703125 KB
+total_sram: 264.19482421875 KB
+W-cache miss rate:  0.286
+X-cache miss rate:  0.078
+
+
+Simulating Layer_2
+tot_cycs: 8724.0
+tot_comps: 72778.0
+sram_traffic_w: 114.3046875 KB
+sram_traffic_x: 39.974609375 KB
+dram_traffic_w: 57.15234375 KB
+dram_traffic_x: 4.4384765625 KB
+dram_traffic_o: 4.4384765625 KB
+sram_traffic_wb: 648.0 KB
+dram_traffic_wb: 324.0 KB
+sram_traffic_xb: 175.5 KB
+dram_traffic_xb: 27.0 KB
+hit_w: 57852
+hit_x: 109024
+miss_w: 672
+miss_x: 56
+total_dram: 417.029296875 KB
+total_sram: 977.779296875 KB
+W-cache miss rate:  1.148
+X-cache miss rate:  0.051
+
+
+Simulating Layer_3
+tot_cycs: 17035.0
+tot_comps: 176563.0
+sram_traffic_w: 78.0625 KB
+sram_traffic_x: 118.966796875 KB
+dram_traffic_w: 39.03125 KB
+dram_traffic_x: 32.75439453125 KB
+dram_traffic_o: 32.75439453125 KB
+sram_traffic_wb: 864.0 KB
+dram_traffic_wb: 432.0 KB
+sram_traffic_xb: 243.0 KB
+dram_traffic_xb: 54.0 KB
+hit_w: 39104
+hit_x: 536540
+miss_w: 864
+miss_x: 108
+total_dram: 590.5400390625 KB
+total_sram: 1304.029296875 KB
+W-cache miss rate:  2.162
+X-cache miss rate:  0.02
+
+
+Simulating Layer_4
+tot_cycs: 6634.0
+tot_comps: 61126.0
+sram_traffic_w: 19.21875 KB
+sram_traffic_x: 49.3369140625 KB
+dram_traffic_w: 3.84375 KB
+dram_traffic_x: 19.490234375 KB
+dram_traffic_o: 19.490234375 KB
+sram_traffic_wb: 360.0 KB
+dram_traffic_wb: 72.0 KB
+sram_traffic_xb: 162.0 KB
+dram_traffic_xb: 36.0 KB
+hit_w: 15600
+hit_x: 319256
+miss_w: 144
+miss_x: 72
+total_dram: 150.82421875 KB
+total_sram: 590.5556640625 KB
+W-cache miss rate:  0.915
+X-cache miss rate:  0.023
+Succesfully save the results into the dictionary.

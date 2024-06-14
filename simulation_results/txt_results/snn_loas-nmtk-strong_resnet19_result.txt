@@ -1,0 +1,419 @@
+
+
+Simulating Layer_1
+tot_cycs: 102810.0
+tot_comps: 967133.0
+sram_traffic_w: 962.05859375 KB
+sram_traffic_x: 213.5078125 KB
+dram_traffic_w: 17.5927734375 KB
+dram_traffic_x: 106.75390625 KB
+dram_traffic_o: 13.34423828125 KB
+sram_traffic_wb: 81.0 KB
+dram_traffic_wb: 9.0 KB
+sram_traffic_xb: 288.0 KB
+dram_traffic_xb: 162.0 KB
+hit_w: 144080
+hit_x: 218312
+miss_w: 40
+miss_x: 320
+total_dram: 308.69091796875 KB
+total_sram: 1544.56640625 KB
+W-cache miss rate:  0.028
+X-cache miss rate:  0.146
+
+
+Simulating Layer_2
+tot_cycs: 120757.0
+tot_comps: 1158603.0
+sram_traffic_w: 1156.607421875 KB
+sram_traffic_x: 407.7109375 KB
+dram_traffic_w: 25.1591796875 KB
+dram_traffic_x: 203.85546875 KB
+dram_traffic_o: 25.48193359375 KB
+sram_traffic_wb: 162.0 KB
+dram_traffic_wb: 18.0 KB
+sram_traffic_xb: 576.0 KB
+dram_traffic_xb: 324.0 KB
+hit_w: 206032
+hit_x: 416920
+miss_w: 72
+miss_x: 576
+total_dram: 596.49658203125 KB
+total_sram: 2302.318359375 KB
+W-cache miss rate:  0.035
+X-cache miss rate:  0.138
+
+
+Simulating Layer_3
+tot_cycs: 16002.0
+tot_comps: 163475.0
+sram_traffic_w: 162.826171875 KB
+sram_traffic_x: 14.09326171875 KB
+dram_traffic_w: 3.1826171875 KB
+dram_traffic_x: 1.56591796875 KB
+dram_traffic_o: 1.56591796875 KB
+sram_traffic_wb: 2.0 KB
+dram_traffic_wb: 1.0 KB
+sram_traffic_xb: 18.0 KB
+dram_traffic_xb: 4.0 KB
+hit_w: 26064
+hit_x: 25648
+miss_w: 8
+miss_x: 8
+total_dram: 11.314453125 KB
+total_sram: 196.91943359375 KB
+W-cache miss rate:  0.031
+X-cache miss rate:  0.031
+
+
+Simulating Layer_4
+tot_cycs: 159126.0
+tot_comps: 1642524.0
+sram_traffic_w: 1635.0390625 KB
+sram_traffic_x: 468.1875 KB
+dram_traffic_w: 31.01171875 KB
+dram_traffic_x: 234.09375 KB
+dram_traffic_o: 29.26171875 KB
+sram_traffic_wb: 162.0 KB
+dram_traffic_wb: 18.0 KB
+sram_traffic_xb: 576.0 KB
+dram_traffic_xb: 324.0 KB
+hit_w: 253976
+hit_x: 478848
+miss_w: 72
+miss_x: 576
+total_dram: 636.3671875 KB
+total_sram: 2841.2265625 KB
+W-cache miss rate:  0.028
+X-cache miss rate:  0.12
+
+
+Simulating Layer_5
+tot_cycs: 107726.0
+tot_comps: 1013842.0
+sram_traffic_w: 1017.2236328125 KB
+sram_traffic_x: 327.765625 KB
+dram_traffic_w: 27.1435546875 KB
+dram_traffic_x: 163.8828125 KB
+dram_traffic_o: 20.4853515625 KB
+sram_traffic_wb: 162.0 KB
+dram_traffic_wb: 18.0 KB
+sram_traffic_xb: 576.0 KB
+dram_traffic_xb: 324.0 KB
+hit_w: 222288
+hit_x: 335056
+miss_w: 72
+miss_x: 576
+total_dram: 553.51171875 KB
+total_sram: 2082.9892578125 KB
+W-cache miss rate:  0.032
+X-cache miss rate:  0.172
+
+
+Simulating Layer_6
+tot_cycs: 194212.0
+tot_comps: 1643007.0
+sram_traffic_w: 1630.568359375 KB
+sram_traffic_x: 540.328125 KB
+dram_traffic_w: 26.0693359375 KB
+dram_traffic_x: 270.1640625 KB
+dram_traffic_o: 33.7705078125 KB
+sram_traffic_wb: 162.0 KB
+dram_traffic_wb: 18.0 KB
+sram_traffic_xb: 576.0 KB
+dram_traffic_xb: 324.0 KB
+hit_w: 213488
+hit_x: 552720
+miss_w: 72
+miss_x: 576
+total_dram: 672.00390625 KB
+total_sram: 2908.896484375 KB
+W-cache miss rate:  0.034
+X-cache miss rate:  0.104
+
+
+Simulating Layer_7
+tot_cycs: 132672.0
+tot_comps: 982854.0
+sram_traffic_w: 979.75390625 KB
+sram_traffic_x: 442.9765625 KB
+dram_traffic_w: 19.935546875 KB
+dram_traffic_x: 221.48828125 KB
+dram_traffic_o: 27.68603515625 KB
+sram_traffic_wb: 162.0 KB
+dram_traffic_wb: 18.0 KB
+sram_traffic_xb: 576.0 KB
+dram_traffic_xb: 324.0 KB
+hit_w: 163240
+hit_x: 453032
+miss_w: 72
+miss_x: 576
+total_dram: 611.10986328125 KB
+total_sram: 2160.73046875 KB
+W-cache miss rate:  0.044
+X-cache miss rate:  0.127
+
+
+Simulating Layer_8
+tot_cycs: 54069.0
+tot_comps: 353702.0
+sram_traffic_w: 362.6630859375 KB
+sram_traffic_x: 377.703125 KB
+dram_traffic_w: 17.2509765625 KB
+dram_traffic_x: 188.8515625 KB
+dram_traffic_o: 11.80322265625 KB
+sram_traffic_wb: 108.0 KB
+dram_traffic_wb: 36.0 KB
+sram_traffic_xb: 288.0 KB
+dram_traffic_xb: 153.0 KB
+hit_w: 35186
+hit_x: 386480
+miss_w: 144
+miss_x: 288
+total_dram: 406.90576171875 KB
+total_sram: 1136.3662109375 KB
+W-cache miss rate:  0.408
+X-cache miss rate:  0.074
+
+
+Simulating Layer_9
+tot_cycs: 113414.0
+tot_comps: 556636.0
+sram_traffic_w: 566.5263671875 KB
+sram_traffic_x: 656.75 KB
+dram_traffic_w: 22.9365234375 KB
+dram_traffic_x: 328.375 KB
+dram_traffic_o: 20.5234375 KB
+sram_traffic_wb: 216.0 KB
+dram_traffic_wb: 72.0 KB
+sram_traffic_xb: 576.0 KB
+dram_traffic_xb: 306.0 KB
+hit_w: 46686
+hit_x: 671936
+miss_w: 288
+miss_x: 576
+total_dram: 749.8349609375 KB
+total_sram: 2015.2763671875 KB
+W-cache miss rate:  0.613
+X-cache miss rate:  0.086
+
+
+Simulating Layer_10
+tot_cycs: 22225.0
+tot_comps: 156779.0
+sram_traffic_w: 158.4697265625 KB
+sram_traffic_x: 26.6787109375 KB
+dram_traffic_w: 5.365234375 KB
+dram_traffic_x: 1.5693359375 KB
+dram_traffic_o: 1.5693359375 KB
+sram_traffic_wb: 8.0 KB
+dram_traffic_wb: 4.0 KB
+sram_traffic_xb: 17.0 KB
+dram_traffic_xb: 2.0 KB
+hit_w: 10972
+hit_x: 51422
+miss_w: 16
+miss_x: 2
+total_dram: 14.50390625 KB
+total_sram: 210.1484375 KB
+W-cache miss rate:  0.146
+X-cache miss rate:  0.004
+
+
+Simulating Layer_11
+tot_cycs: 216746.0
+tot_comps: 914726.0
+sram_traffic_w: 916.853515625 KB
+sram_traffic_x: 1266.609375 KB
+dram_traffic_w: 23.56640625 KB
+dram_traffic_x: 633.3046875 KB
+dram_traffic_o: 39.58154296875 KB
+sram_traffic_wb: 216.0 KB
+dram_traffic_wb: 72.0 KB
+sram_traffic_xb: 576.0 KB
+dram_traffic_xb: 306.0 KB
+hit_w: 47976
+hit_x: 1296432
+miss_w: 288
+miss_x: 576
+total_dram: 1074.45263671875 KB
+total_sram: 2975.462890625 KB
+W-cache miss rate:  0.597
+X-cache miss rate:  0.044
+
+
+Simulating Layer_12
+tot_cycs: 418324.0
+tot_comps: 1423291.0
+sram_traffic_w: 1420.2314453125 KB
+sram_traffic_x: 1583.859375 KB
+dram_traffic_w: 30.298828125 KB
+dram_traffic_x: 791.9296875 KB
+dram_traffic_o: 49.49560546875 KB
+sram_traffic_wb: 216.0 KB
+dram_traffic_wb: 72.0 KB
+sram_traffic_xb: 576.0 KB
+dram_traffic_xb: 306.0 KB
+hit_w: 61764
+hit_x: 1621296
+miss_w: 288
+miss_x: 576
+total_dram: 1249.72412109375 KB
+total_sram: 3796.0908203125 KB
+W-cache miss rate:  0.464
+X-cache miss rate:  0.036
+
+
+Simulating Layer_13
+tot_cycs: 261157.0
+tot_comps: 795055.0
+sram_traffic_w: 791.2333984375 KB
+sram_traffic_x: 1636.765625 KB
+dram_traffic_w: 14.8125 KB
+dram_traffic_x: 818.3828125 KB
+dram_traffic_o: 51.14892578125 KB
+sram_traffic_wb: 216.0 KB
+dram_traffic_wb: 72.0 KB
+sram_traffic_xb: 576.0 KB
+dram_traffic_xb: 306.0 KB
+hit_w: 30048
+hit_x: 1675472
+miss_w: 288
+miss_x: 576
+total_dram: 1262.34423828125 KB
+total_sram: 3219.9990234375 KB
+W-cache miss rate:  0.949
+X-cache miss rate:  0.034
+
+
+Simulating Layer_14
+tot_cycs: 1302420.0
+tot_comps: 4009792.0
+sram_traffic_w: 3987.6953125 KB
+sram_traffic_x: 1873.3125 KB
+dram_traffic_w: 71.8828125 KB
+dram_traffic_x: 936.65625 KB
+dram_traffic_o: 58.541015625 KB
+sram_traffic_wb: 216.0 KB
+dram_traffic_wb: 72.0 KB
+sram_traffic_xb: 576.0 KB
+dram_traffic_xb: 306.0 KB
+hit_w: 146928
+hit_x: 1917696
+miss_w: 288
+miss_x: 576
+total_dram: 1445.080078125 KB
+total_sram: 6653.0078125 KB
+W-cache miss rate:  0.196
+X-cache miss rate:  0.03
+
+
+Simulating Layer_15
+tot_cycs: 80046.0
+tot_comps: 124822.0
+sram_traffic_w: 131.6904296875 KB
+sram_traffic_x: 820.15625 KB
+dram_traffic_w: 9.7939453125 KB
+dram_traffic_x: 410.078125 KB
+dram_traffic_o: 12.81494140625 KB
+sram_traffic_wb: 286.0 KB
+dram_traffic_wb: 142.25 KB
+sram_traffic_xb: 288.0 KB
+dram_traffic_xb: 148.5 KB
+hit_w: 9460
+hit_x: 839264
+miss_w: 569
+miss_x: 576
+total_dram: 723.43701171875 KB
+total_sram: 1525.8466796875 KB
+W-cache miss rate:  5.674
+X-cache miss rate:  0.069
+
+
+Simulating Layer_16
+tot_cycs: 31065.0
+tot_comps: 42542.0
+sram_traffic_w: 47.388671875 KB
+sram_traffic_x: 981.09375 KB
+dram_traffic_w: 5.84375 KB
+dram_traffic_x: 490.546875 KB
+dram_traffic_o: 15.32958984375 KB
+sram_traffic_wb: 542.5 KB
+dram_traffic_wb: 261.0 KB
+sram_traffic_xb: 576.0 KB
+dram_traffic_xb: 297.0 KB
+hit_w: 4940
+hit_x: 1003488
+miss_w: 1044
+miss_x: 1152
+total_dram: 1069.72021484375 KB
+total_sram: 2146.982421875 KB
+W-cache miss rate:  17.447
+X-cache miss rate:  0.115
+
+
+Simulating Layer_17
+tot_cycs: 19921.0
+tot_comps: 61766.0
+sram_traffic_w: 64.947265625 KB
+sram_traffic_x: 56.18701171875 KB
+dram_traffic_w: 4.62890625 KB
+dram_traffic_x: 1.70263671875 KB
+dram_traffic_o: 1.70263671875 KB
+sram_traffic_wb: 32.0 KB
+dram_traffic_wb: 16.0 KB
+sram_traffic_xb: 16.5 KB
+dram_traffic_xb: 1.0 KB
+hit_w: 4676
+hit_x: 111582
+miss_w: 64
+miss_x: 2
+total_dram: 25.0341796875 KB
+total_sram: 169.63427734375 KB
+W-cache miss rate:  1.35
+X-cache miss rate:  0.002
+
+
+Simulating Layer_18
+tot_cycs: 42625.0
+tot_comps: 65937.0
+sram_traffic_w: 71.90234375 KB
+sram_traffic_x: 1021.875 KB
+dram_traffic_w: 7.5107421875 KB
+dram_traffic_x: 510.9375 KB
+dram_traffic_o: 15.966796875 KB
+sram_traffic_wb: 565.5 KB
+dram_traffic_wb: 278.25 KB
+sram_traffic_xb: 576.0 KB
+dram_traffic_xb: 297.0 KB
+hit_w: 6578
+hit_x: 1045248
+miss_w: 1113
+miss_x: 1152
+total_dram: 1109.6650390625 KB
+total_sram: 2235.27734375 KB
+W-cache miss rate:  14.471
+X-cache miss rate:  0.11
+
+
+Simulating Layer_19
+tot_cycs: 87769.0
+tot_comps: 124998.0
+sram_traffic_w: 134.32421875 KB
+sram_traffic_x: 1303.6875 KB
+dram_traffic_w: 12.255859375 KB
+dram_traffic_x: 651.84375 KB
+dram_traffic_o: 20.3701171875 KB
+sram_traffic_wb: 564.75 KB
+dram_traffic_wb: 278.0 KB
+sram_traffic_xb: 576.0 KB
+dram_traffic_xb: 297.0 KB
+hit_w: 11438
+hit_x: 1333824
+miss_w: 1112
+miss_x: 1152
+total_dram: 1259.4697265625 KB
+total_sram: 2578.76171875 KB
+W-cache miss rate:  8.861
+X-cache miss rate:  0.086
+Succesfully save the results into the dictionary.
