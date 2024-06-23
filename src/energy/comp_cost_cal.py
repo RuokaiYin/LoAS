@@ -90,15 +90,20 @@ def tppe():
     # print(laggy_prefix_buffer.get_dpower()/total_dp)
     # print(laggy_prefix_buffer.get_lpower()/total_lp)
     # print(laggy_prefix_buffer.get_access_energy()/total_e)
+    print('TPPE data')
+    print(f'Total area of {total_area} mm^3')
+    print(f'Total dpower of {total_dp} mW')
+    print(f'Total lpower of {total_lp} mW')
+    print(f'Total energy of {total_e} nJ')
 
     return total_area, total_dp, total_lp, total_e
 
-tppe_area, tppe_dp, tppe_lp, tppe_e = tppe()
-print('TPPE data')
-print(f'Total area of {tppe_area} mm^3')
-print(f'Total dpower of {tppe_dp} mw')
-print(f'Total lpower of {tppe_lp} mW')
-print(f'Total energy of {tppe_e} nJ')
+# tppe_area, tppe_dp, tppe_lp, tppe_e = tppe()
+# print('TPPE data')
+# print(f'Total area of {tppe_area} mm^3')
+# print(f'Total dpower of {tppe_dp} mw')
+# print(f'Total lpower of {tppe_lp} mW')
+# print(f'Total energy of {tppe_e} nJ')
 
 
 def sparten_pe():
@@ -145,15 +150,21 @@ def sparten_pe():
 
     #! -> The single compute path = (bma + bmb + buffer_stream) - > fast_prefix -> acc
     total_e = sudo_acc_e + fast_prefix_e + buffer_bma_e + buffer_bmb_e + buffer_stream_e
+    
+    print('SparTen data')
+    print(f'Total area of {total_area} mm^3')
+    print(f'Total dpower of {total_dp} mW')
+    print(f'Total lpower of {total_lp} mW')
+    print(f'Total energy of {total_e} nJ')
 
     return total_area, total_dp, total_lp, total_e
 
-sparten_pe_area, sparten_pe_dp, sparten_pe_lp, sparten_pe_e = sparten_pe()
-print('SparTen data')
-print(f'Total area of {sparten_pe_area} mm^3')
-print(f'Total dpower of {sparten_pe_dp} mw')
-print(f'Total lpower of {sparten_pe_lp} mW')
-print(f'Total energy of {sparten_pe_e} nJ')
+# sparten_pe_area, sparten_pe_dp, sparten_pe_lp, sparten_pe_e = sparten_pe()
+# print('SparTen data')
+# print(f'Total area of {sparten_pe_area} mm^3')
+# print(f'Total dpower of {sparten_pe_dp} mw')
+# print(f'Total lpower of {sparten_pe_lp} mW')
+# print(f'Total energy of {sparten_pe_e} nJ')
 
 
 
@@ -207,15 +218,20 @@ def sparten_ann_pe():
 
     #! -> The single compute path = (bma + bmb + buffer_stream) - > fast_prefix -> acc
     total_e = sudo_acc_e + sudo_mul_e + fast_prefix_e + buffer_bma_e + buffer_bmb_e + buffer_stream_e
+    print('SparTen ANN data')
+    print(f'Total area of {total_area} mm^3')
+    print(f'Total dpower of {total_dp} mW')
+    print(f'Total lpower of {total_lp} mW')
+    print(f'Total energy of {total_e} nJ')
 
     return total_area, total_dp, total_lp, total_e
 
-sparten_ann_pe_area, sparten_ann_pe_dp, sparten_ann_pe_lp, sparten_ann_pe_e = sparten_ann_pe()
-print('SparTen ann data')
-print(f'Total area of {sparten_ann_pe_area} mm^3')
-print(f'Total dpower of {sparten_ann_pe_dp} mw')
-print(f'Total lpower of {sparten_ann_pe_lp} mW')
-print(f'Total energy of {sparten_ann_pe_e} nJ')
+# sparten_ann_pe_area, sparten_ann_pe_dp, sparten_ann_pe_lp, sparten_ann_pe_e = sparten_ann_pe()
+# print('SparTen ann data')
+# print(f'Total area of {sparten_ann_pe_area} mm^3')
+# print(f'Total dpower of {sparten_ann_pe_dp} mw')
+# print(f'Total lpower of {sparten_ann_pe_lp} mW')
+# print(f'Total energy of {sparten_ann_pe_e} nJ')
 
 
 
@@ -246,16 +262,67 @@ def gospa_pe():
 
     #! -> The single compute path = (FIFO + buffer) - > Acc
     total_e = sudo_acc.get_access_energy()*4 + fifo_mp.get_access_energy() + buffer_bma.get_access_energy()
+    print('GoSPA data')
+    print(f'Total area of {total_area} mm^3')
+    print(f'Total dpower of {total_dp} mW')
+    print(f'Total lpower of {total_lp} mW')
+    print(f'Total energy of {total_e} nJ')
 
     return total_area, total_dp, total_lp, total_e
 
-gospa_pe_area, gospa_pe_dp, gospa_pe_lp, gospa_pe_e = gospa_pe()
-print('GoSPA data')
-print(f'Total area of {gospa_pe_area} mm^3')
-print(f'Total dpower of {gospa_pe_dp} mw')
-print(f'Total lpower of {gospa_pe_lp} mW')
-print(f'Total energy of {gospa_pe_e} nJ')
+# gospa_pe_area, gospa_pe_dp, gospa_pe_lp, gospa_pe_e = gospa_pe()
+# print('GoSPA data')
+# print(f'Total area of {gospa_pe_area} mm^3')
+# print(f'Total dpower of {gospa_pe_dp} mw')
+# print(f'Total lpower of {gospa_pe_lp} mW')
+# print(f'Total energy of {gospa_pe_e} nJ')
 
+
+def gamma_pe():
+
+    acc = Accumulator('gamma_acc', 24)
+    acc_area = acc.get_area()
+    acc_dp = acc.get_dpower()
+    acc_lp = acc.get_lpower()
+
+    buffer_x = Register('buf_x',64)
+    buffer_x_area = buffer_x.get_area()
+    buffer_x_dp = buffer_x.get_dpower()
+    buffer_x_lp = buffer_x.get_lpower()
+
+    buffer_w = Register('buf_w',64*8)
+    buffer_w_area = buffer_w.get_area()
+    buffer_w_dp = buffer_w.get_dpower()
+    buffer_w_lp = buffer_w.get_lpower()
+
+    buffer_wcsr = Register('buf_w',64*6)
+    buffer_wcsr_area = buffer_wcsr.get_area()
+    buffer_wcsr_dp = buffer_wcsr.get_dpower()
+    buffer_wcsr_lp = buffer_wcsr.get_lpower()
+
+    #! The merger is rougly 55% of 64-bit Multiplier's area
+    dummy_mul = Multiplier('dummy', 64)
+    merger_area = dummy_mul.get_area()*0.55
+    merger_dp = dummy_mul.get_dpower()*0.55
+    merger_lp = dummy_mul.get_lpower()*0.55
+
+
+    total_area = acc_area + buffer_x_area + buffer_w_area + buffer_wcsr_area + merger_area
+    total_dp = acc_dp + buffer_x_dp + buffer_w_dp + buffer_wcsr_dp + merger_dp
+    total_lp = acc_lp + buffer_x_lp + buffer_w_lp + buffer_wcsr_lp + merger_lp
+
+    #! -> The single compute path = wcsr->merger + (bufferw + bufferx)-> Acc
+    total_e = acc.get_access_energy() + buffer_x.get_access_energy() + buffer_w.get_access_energy() + buffer_wcsr.get_access_energy() + dummy_mul.get_access_energy()*0.55
+
+    print('Gamma data')
+    print(f'Total area of {total_area} mm^3')
+    print(f'Total dpower of {total_dp} mW')
+    print(f'Total lpower of {total_lp} mW')
+    print(f'Total energy of {total_e} nJ')
+
+    return total_area, total_dp, total_lp, total_e
+
+# gospa_pe_area, gospa_pe_dp, gospa_pe_lp, gospa_pe_e = gospa_pe()
 
 
 def ptb_pe():
@@ -273,11 +340,12 @@ def ptb_pe():
     total_lp = b_reg_8_lp + sudo_acc_lp
     total_e = sudo_acc.get_access_energy() + b_reg_8.get_access_energy()*2
 
+    print('PTB data')
+    # ptb_pe_dp, ptb_pe_lp, ptb_pe_e = ptb_pe()
+    print(f'Total dpower of {total_dp} mW')
+    print(f'Total lpower of {total_lp} mW')
+    print(f'Total energy of {total_e} nJ')
+
     return total_dp, total_lp, total_e
 
-print('PTB data')
-ptb_pe_dp, ptb_pe_lp, ptb_pe_e = ptb_pe()
-print(f'Total dpower of {ptb_pe_dp} mw')
-print(f'Total lpower of {ptb_pe_lp} mW')
-print(f'Total energy of {ptb_pe_e} nJ')
-    
+gamma_pe()

@@ -157,6 +157,8 @@ def sparten_sim_layer(inp_mat, w_mat, tiling_dataflow, tile_dict):
         x_pe, w_pe, _ = _tile_to_pe_custom(x_tiles[i], w_tiles[i])
 
         #! Read the inputs and broadcasted from SRAM to the PEs
+        #! Todo: why we need this?
+        #! Todo: ok, got it, here we directly send all the spikes no matter they are 1 or 0, due to they can perform as bitmask.
         layer_stats['sram_traffic_x'] += x_tiles[i].numel()
         
         latency_lists = []

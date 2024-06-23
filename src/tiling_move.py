@@ -68,9 +68,9 @@ def _Tile_movement_Custom(inp_mat, w_mat, dataflow, tile_dict=None):
 
     assert k_steps == math.ceil(inp_mat.size(2)/inp_pe_c), "x and w tile does not share the k dimension move, not supported!"
     step_dict = {'m': m_steps,
-                    'n': n_steps,
-                    'k': k_steps,
-                    't': t_steps}
+                 'n': n_steps,
+                 'k': k_steps,
+                 't': t_steps}
 
     #? Main 4-nested loops for the tile to move along the matrices.
     for i in range(step_dict[dataflow[0]]):

@@ -24,13 +24,14 @@ import matplotlib.pyplot as plt
 from matplotlib.ticker import (AutoMinorLocator, MultipleLocator)
 import matplotlib
 import numpy as np
+import argparse
 
 loas_comp = 5.8
 sparten_comp = 6.15
-gospa_comp = 1.34
+gospa_comp = 1.34 * 1.3 #! 30% IDGEN overhead
 sparten_ann_comp = 7.949
 ptb_comp = 0.148*16*4
-gamma_comp = 4.98
+gamma_comp = 4.98*(6/8)
 
 # left: comp, right: sram
 loas_lp = 0.5 + 124.48
@@ -46,7 +47,7 @@ c_time = 1/800
 #! This is the one that used in snn and snn comparison, both loas and sparten use this dram energy
 dram_e = 2.9
 #! This is the one that used in ann and snn comparison, both loas and sparten use this dram energy
-ann_dram = 9.6 
+ann_dram = 9.6
 # ann_dram = 2.9
 sram_e = 0.0681
 
@@ -352,6 +353,121 @@ def plot_resnet():
     plt.savefig(f'{arch}_energy.pdf', bbox_inches='tight',pad_inches=0.1)
 
 
+def plot_snn_energy(arch, plot_mode):
+    #########################################
+    # Data 
+    #########################################
+    path = f'../simulation_results/raw/sparten/sparten_{arch}_dict.pth'
+    dic = torch.load(path,map_location=torch.device('cpu'))
+    sparten_cycles = 0
+    sparten_comps = 0
+    sparten_dram = 0
+    sparten_sram = 0
+    for k,v in dic.items():
+        sparten_cycles += v['tot_cycs']
+        sparten_comps += v['tot_comps']
+        sparten_dram += v['total_dram']
+        sparten_sram += v['total_sram']
+    
+    sparten_e = sparten_cycles*c_time*sparten_lp + dram_e*sparten_dram*1024 + sram_e*sparten_sram*1024 + sparten_comp*sparten_comps
+
+    path = f'../simulation_results/raw/gospa/gospa_{arch}_dict.pth'
+    dic = torch.load(path,map_location=torch.device('cpu'))
+    gospa_cycles = 0
+    gospa_comps = 0
+    gospa_dram = 0
+    gospa_sram = 0
+    for k,v in dic.items():
+        gospa_cycles += v['tot_cycs']
+        gospa_comps += v['tot_comps']
+        gospa_dram += v['total_dram']
+        gospa_sram += v['total_sram']
+
+    gospa_e = gospa_cycles*c_time*gospa_lp + dram_e*gospa_dram*1024 + sram_e*gospa_sram*1024 + gospa_comp*gospa_comps
+
+    path = f'./gamma_{arch}_dict.pth'
+    dic = torch.load(path,map_location=torch.device('cpu'))
+    gamma_cycles = 0
+    gamma_comps = 0
+    gamma_dram = 0
+    gamma_sram = 0
+    for k,v in dic.items():
+        gamma_cycles += v['tot_cycs']
+        gamma_comps += v['tot_comps']
+        gamma_dram += v['total_dram']
+        gamma_sram += v['total_sram']
+
+    gamma_e = gamma_cycles*c_time*gamma_lp + dram_e*gamma_dram*1024 + sram_e*gamma_sram*1024 + gamma_comp*gamma_comps
+
+    path = f'../simulation_results/raw/loas/loas-mntk_normal_{arch}_dict.pth'
+    dic = torch.load(path,map_location=torch.device('cpu'))
+    loas_cycles = 0
+    loas_comps = 0
+    loas_dram = 0
+    loas_sram = 0
+    for k,v in dic.items():
+        loas_cycles += v['tot_cycs']
+        loas_comps += v['tot_comps']
+        loas_dram += v['total_dram']
+        loas_sram += v['total_sram']
+
+    loas_e = loas_cycles*c_time*loas_lp + dram_e*loas_dram*1024 + sram_e*loas_sram*1024 + loas_comp*loas_comps
+
+    path = f'../simulation_results/raw/loas/loas-mntk_strong_{arch}_dict.pth'
+    dic = torch.load(path,map_location=torch.device('cpu'))
+    loasft_cycles = 0
+    loasft_comps = 0
+    loasft_dram = 0
+    loasft_sram = 0
+    for k,v in dic.items():
+        loasft_cycles += v['tot_cycs']
+        loasft_comps += v['tot_comps']
+        loasft_dram += v['total_dram']
+        loasft_sram += v['total_sram']
+    
+    loasft_e = loasft_cycles*c_time*loas_lp + dram_e*loasft_dram*1024 + sram_e*loasft_sram*1024 + loas_comp*loasft_comps
+
+    print(arch)
+    print([sparten_e/sparten_e, sparten_e/gospa_e, sparten_e/gamma_e, sparten_e/loas_e, sparten_e/loasft_e])
+    print([sparten_cycles*c_time*sparten_lp/sparten_e, dram_e*sparten_dram*1024/sparten_e, sram_e*sparten_sram*1024/sparten_e, sparten_comp*sparten_comps/sparten_e])
+    print([gospa_cycles*c_time*gospa_lp/gospa_e, dram_e*gospa_dram*1024/gospa_e, sram_e*gospa_sram*1024/gospa_e, gospa_comp*gospa_comps/gospa_e])
+    print([gamma_cycles*c_time*gamma_lp/gamma_e, dram_e*gamma_dram*1024/gamma_e, sram_e*gamma_sram*1024/gamma_e, gamma_comp*gamma_comps/gamma_e])
+    print([loasft_cycles*c_time*loas_lp/loasft_e, dram_e*loasft_dram*1024/loasft_e, sram_e*loasft_sram*1024/loasft_e, loas_comp*loasft_comps/loasft_e])
+
+    #########################################
+    # Plot 
+    #########################################
+
+    labels = ['SparTen-S', 'GoSpa-S', 'Gamma-S', 'LoAS', 'LoAS-FT']
+    values = [sparten_e/sparten_e, sparten_e/gospa_e, sparten_e/gamma_e, sparten_e/loas_e, sparten_e/loasft_e]
+
+    # Create bar chart
+    fig, ax = plt.subplots(1,1,figsize=(1.2,1.8),dpi=150)
+    bars = ax.bar(labels, values, color=['#40679E','#F5DD61', '#81A263', '#BC7FCD','#FB9AD1'],linewidth=0.9,zorder=4,edgecolor='black',alpha=0.85)
+
+    # Set title and y-axis label
+    if arch == 'vgg16':
+        ax.set_title('VGG16')
+    elif arch == 'resnet19':
+        ax.set_title('ResNet19')
+    elif arch == 'alexnet':
+        ax.set_title('Alexnet')
+    ax.set_ylabel('Normalized energy efficiency')
+    # ax.xaxis.set_minor_locator(AutoMinorLocator(4))
+    ax.yaxis.set_minor_locator(AutoMinorLocator(4))
+    plt.grid(which='minor', alpha=0.2)
+    plt.grid(which='major', alpha=0.5)
+
+    ax.get_yaxis().set_major_formatter(plt.ScalarFormatter())
+    # ax.set_yticklabels([])
+    plt.xticks(rotation=90)
+
+    # Display the figure
+    if plot_mode == 'show':
+        plt.show()
+    else:
+        plt.savefig(f'../figures/revision/{arch}_energy.pdf', bbox_inches='tight',pad_inches=0.1)
+
 def plot_ann(arch, mode):
 
     #########################################
@@ -650,16 +766,11 @@ def plot_ptb(arch, mode):
         plt.savefig(f'{arch}_ptb_speed.pdf', bbox_inches='tight',pad_inches=0.1)
 
 if __name__ == '__main__':
-    # plot_vgg16()
-    # plot_alexnet()
-    # plot_resnet()
-    # mode = 'dram'
-    # plot_ann('resnet19','dram')
-    # plot_ann('resnet19','sram')
-    # plot_ann('resnet19','energy')
-    # plot_ann('vgg16','dram')
-    # plot_ann('vgg16','sram')
-    # plot_ann('vgg16','energy')
-    # plot_ptb('vgg16','cycles')
-    # plot_ptb('vgg16','dram')
+    parser = argparse.ArgumentParser("LoAS-Plot")
+    parser.add_argument('--arch', type=str, default='vgg16', help='[vgg16, resnet19, alexnet]')
+    parser.add_argument('--mode', type=str, default='snn', help='[snn, ann, ptb]')
+    parser.add_argument('--pmode', type=str, default='show', help='[show, save]')
+    args = parser.parse_args()
+    if args.mode == 'snn':
+        plot_snn_energy(args.arch, args.pmode)
 

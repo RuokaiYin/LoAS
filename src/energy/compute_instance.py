@@ -83,7 +83,6 @@ class Primitive_Computation_Unit:
                 self.info['access-latency'] = instance['attributes']['access-latency']
                 self.info['cycle-time'] = instance['attributes']['cycle-time']
 
-
     #*                                *#
     #* This returns the energy in pJ. *#
     #*                                *#
