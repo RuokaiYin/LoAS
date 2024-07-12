@@ -66,7 +66,7 @@ def _check_dram2sram_traffic(tensor, sram_buffer, sram_size_left, stats_dict, va
         stats_dict[f'miss_{var}'] += 1
         stats_dict[f'hit_{var}'] += n-1
 
-        #! In LoAS, weights and packed spikes have same SRAM behavior.
+        #! In ANN-Sparten, weights and packed spikes have same SRAM behavior.
         stats_dict[f'dram_traffic_{var}b'] += n_tot
         stats_dict[f'sram_traffic_{var}b'] += n_tot
         stats_dict[f'dram_traffic_{var}'] += n
@@ -191,6 +191,6 @@ if __name__ == '__main__':
     parser.add_argument('--arch', type=str, default='vgg16', help='[vgg16, resnet19, alexnet]')
     args = parser.parse_args()
 
-    results = test_real_data(f'./{args.arch}_ann_final_matrices_dict.pth')
-    torch.save(results, f'./sparten_ann_{args.arch}_dict.pth')
+    results = test_real_data(f'../matrices_dict/{args.arch}_ann_final_matrices_dict.pth')
+    # torch.save(results, f'./sparten_ann_{args.arch}_dict.pth')
     print('Succesfully save the results into the dictionary.')

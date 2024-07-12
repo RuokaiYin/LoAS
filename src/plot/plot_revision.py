@@ -74,7 +74,7 @@ def plot_speedup_memtraffic(mode, arch, plot_mode):
     if mode == 'speedup':
         labels = ['SparTen-S', 'GoSpa-S', 'Gamma-S', 'LoAS', 'LoAS-FT']
         values = [sparten_cycles/sparten_cycles, sparten_cycles/gospa_cycles, sparten_cycles/gamma_cycles, sparten_cycles/loas_cycles, sparten_cycles/loasft_cycles]
-
+        print(gamma_cycles/loas_cycles)
         # Create bar chart
         fig, ax = plt.subplots(1,1,figsize=(1.2,1.8),dpi=150)
         bars = ax.bar(labels, values, color=['#40679E','#F5DD61','#81A263','#BC7FCD','#FB9AD1'],linewidth=0.9,zorder=4,edgecolor='black',alpha=0.85)
@@ -105,7 +105,7 @@ def plot_speedup_memtraffic(mode, arch, plot_mode):
     elif mode == 'dram':
         labels = ['SparTen-S', 'GoSpa-S', 'Gamma-S', 'LoAS', 'LoAS-FT']
         values = [sparten_dram, gospa_dram, gamma_dram, loas_dram, loasft_dram]
-
+        print(gamma_dram/loasft_dram)
         # Create bar chart
         fig, ax = plt.subplots(1,1,figsize=(1.2,1.8),dpi=150)
         bars = ax.bar(labels, values, color=['#40679E','#F5DD61','#81A263','#BC7FCD','#FB9AD1'],linewidth=0.9,zorder=4,edgecolor='black',alpha=0.85)
@@ -134,6 +134,7 @@ def plot_speedup_memtraffic(mode, arch, plot_mode):
         labels = ['SparTen-S', 'GoSpa-S', 'Gamma-S', 'LoAS', 'LoAS-FT']
         values = [sparten_sram/1024, gospa_sram/1024, gamma_sram/1024, loas_sram/1024, loasft_sram/1024]
         print(values)
+        print(gamma_sram/loasft_sram)
         # Create bar chart
         fig, ax = plt.subplots(1,1,figsize=(1.2,1.8),dpi=150)
         bars = ax.bar(labels, values, color=['#40679E','#F5DD61','#81A263','#BC7FCD','#FB9AD1'],linewidth=0.9,zorder=4,edgecolor='black',alpha=0.85)

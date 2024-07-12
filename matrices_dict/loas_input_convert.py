@@ -18,6 +18,15 @@ def loas_spike_pack(spike_mat, mode='normal'):
 
     print(1-torch.count_nonzero(spike_mat)/spike_mat.numel())
     pack_spike_mat = spike_mat.sum(dim=0)
+    # num_elements = pack_spike_mat.numel()
+    # num_ones = int(num_elements * 0.132)
+    # num_zeros = num_elements - num_ones
+
+    # values = torch.cat([torch.ones(num_ones), torch.zeros(num_zeros)])
+    # indices = torch.randperm(num_elements)
+    # shuffled_values = values[indices]
+    # pack_spike_mat = shuffled_values.reshape(pack_spike_mat.shape)
+
     print(1-torch.count_nonzero(pack_spike_mat)/pack_spike_mat.numel())
     
 
@@ -36,7 +45,11 @@ if __name__ == '__main__':
     parser.add_argument('--loas', type=str, default='normal', help='[normal, strong]')
     args = parser.parse_args()
 
-    path = f'./matrices_dict/{args.arch}_final_matrices_dict.pth'
+    # path = f'./{args.arch}_final_matrices_dict.pth'
+    # path = f'./{args.arch}_high_final_matrices_dict.pth'
+    # path = f'./{args.arch}_medium_final_matrices_dict.pth'
+    # path = f'./{args.arch}_high_T8_final_matrices_dict.pth'
+    path = f'./spikeformer_final_matrices_dict.pth'
     matrices_dict = torch.load(path,map_location=torch.device('cpu'))
 
     loas_matrices_dict = {}
@@ -57,7 +70,8 @@ if __name__ == '__main__':
         loas_matrices_dict[k]['x'] = loas_spike_mat
         loas_matrices_dict[k]['w'] = v['w']
 
-    # torch.save(loas_matrices_dict, f'./matrices_dict/{args.arch}_final_matrices_dict_loas_{mode}.pth')
+    # torch.save(loas_matrices_dict, f'./{args.arch}_high_T8_final_matrices_dict_loas_{mode}.pth')
+    torch.save(loas_matrices_dict, f'./spikeformer_final_matrices_dict_loas_{mode}.pth')
     print("---- Successfully convert the PyTorch model into LoAS-packed Matrices. ----")
     print(f"On {args.arch}, original spike sparsity: {1-(total_sp/total_sp_numel)}")
     print(f"On {args.arch}, packed spike sparsity: {1-(total_nz/total_numel)}")

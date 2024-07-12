@@ -322,6 +322,56 @@ def gamma_pe():
 
     return total_area, total_dp, total_lp, total_e
 
+def gamma_ann_pe():
+
+    acc = Accumulator('gamma_acc', 24)
+    acc_area = acc.get_area()
+    acc_dp = acc.get_dpower()
+    acc_lp = acc.get_lpower()
+
+    buffer_x = Register('buf_x',64)
+    buffer_x_area = buffer_x.get_area()
+    buffer_x_dp = buffer_x.get_dpower()
+    buffer_x_lp = buffer_x.get_lpower()
+
+    buffer_w = Register('buf_w',64*8)
+    buffer_w_area = buffer_w.get_area()
+    buffer_w_dp = buffer_w.get_dpower()
+    buffer_w_lp = buffer_w.get_lpower()
+
+    buffer_wcsr = Register('buf_w',64*6)
+    buffer_wcsr_area = buffer_wcsr.get_area()
+    buffer_wcsr_dp = buffer_wcsr.get_dpower()
+    buffer_wcsr_lp = buffer_wcsr.get_lpower()
+
+    #! The merger is rougly 55% of 64-bit Multiplier's area
+    dummy_mul = Multiplier('dummy', 64)
+    merger_area = dummy_mul.get_area()*0.55
+    merger_dp = dummy_mul.get_dpower()*0.55
+    merger_lp = dummy_mul.get_lpower()*0.55
+
+    mul = Multiplier('dummy', 8)
+    mul_area = mul.get_area()
+    mul_dp = mul.get_dpower()
+    mul_lp = mul.get_lpower()
+    mul_e = mul.get_access_energy()
+
+
+    total_area = acc_area + buffer_x_area + buffer_w_area + buffer_wcsr_area + merger_area + mul_area
+    total_dp = acc_dp + buffer_x_dp + buffer_w_dp + buffer_wcsr_dp + merger_dp + mul_dp
+    total_lp = acc_lp + buffer_x_lp + buffer_w_lp + buffer_wcsr_lp + merger_lp + mul_lp
+
+    #! -> The single compute path = wcsr->merger + (bufferw + bufferx)-> Acc
+    total_e = acc.get_access_energy() + buffer_x.get_access_energy() + buffer_w.get_access_energy() + buffer_wcsr.get_access_energy() + dummy_mul.get_access_energy()*0.55 + mul.get_access_energy()
+
+    print('Gamma ANN data')
+    print(f'Total area of {total_area} mm^3')
+    print(f'Total dpower of {total_dp} mW')
+    print(f'Total lpower of {total_lp} mW')
+    print(f'Total energy of {total_e} nJ')
+
+    return total_area, total_dp, total_lp, total_e
+
 # gospa_pe_area, gospa_pe_dp, gospa_pe_lp, gospa_pe_e = gospa_pe()
 
 
@@ -348,4 +398,36 @@ def ptb_pe():
 
     return total_dp, total_lp, total_e
 
-gamma_pe()
+def stellar_pe():
+
+    b_reg_1 = Register('12x6-b',72)
+    b_reg_1_dp = b_reg_1.get_dpower()
+    b_reg_1_lp = b_reg_1.get_lpower()
+
+    b_reg_2 = Register('12x12-b',144)
+    b_reg_2_dp = b_reg_2.get_dpower()
+    b_reg_2_lp = b_reg_2.get_lpower()
+
+    b_reg_3 = Register('24x12-b',288)
+    b_reg_3_dp = b_reg_3.get_dpower()
+    b_reg_3_lp = b_reg_3.get_lpower()
+
+    sudo_acc = Accumulator('seudo_acc', 12)
+    sudo_acc_dp = sudo_acc.get_dpower()*4
+    sudo_acc_lp = sudo_acc.get_lpower()*4
+
+    total_dp = b_reg_1_dp + b_reg_2_dp + b_reg_3_dp + sudo_acc_dp
+    total_lp = b_reg_1_lp + b_reg_2_lp + b_reg_3_lp + sudo_acc_lp
+    total_e = sudo_acc.get_access_energy() + b_reg_1.get_access_energy() + b_reg_2.get_access_energy() + b_reg_3.get_access_energy()
+
+    print('Stellar data')
+    # ptb_pe_dp, ptb_pe_lp, ptb_pe_e = ptb_pe()
+    print(f'Total dpower of {total_dp} mW')
+    print(f'Total lpower of {total_lp} mW')
+    print(f'Total energy of {total_e} nJ')
+
+    return total_dp, total_lp, total_e
+
+# gamma_pe()
+# stellar_pe()
+gamma_ann_pe()
