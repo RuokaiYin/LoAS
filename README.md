@@ -10,7 +10,6 @@ This repo intends to provide the source codes in PyTorch for fine-tuning and pro
 1b. Profiling the SNN models to examine the ratio of silent neurons by masking out all neurons that only spike for 1 time.\
    python3 model_profile.py -profile --n_mask 1
 
-
 2. Finetuning the SNN models to recover the accuracy from masking out the neurons that only spike for 1 time.\
    python3 fine_tune.py --n_masks 1
 
