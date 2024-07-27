@@ -2,7 +2,7 @@
 
 Accepted to MICRO 2024. The first study on spMspM acceleration for dual sparse SNNs.
 
-This repo intends to provide the source codes in PyTorch for fine-tuning and profiling the SNN models used in this work.
+This repo intends to provide the source codes in PyTorch for fine-tuning and profiling the SNN models.
 
 1a. Profiling the SNN models to examine the original ratio of silent neurons.
    python3 model_profile.py -profile --n_mask 0
