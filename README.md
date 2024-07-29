@@ -1,6 +1,6 @@
 # LoAS
 
-Accepted to MICRO 2024. The first study on spMspM acceleration for dual sparse SNNs.
+The exploration of the design space of spMspM acceleration for dual sparse SNNs.
 
 This repo intends to provide the source codes in PyTorch for fine-tuning and profiling the SNN models.
 
