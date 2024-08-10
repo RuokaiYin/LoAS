@@ -76,6 +76,7 @@ def main():
 
     _SP_PROFILE_ = False
     _SAVE_CKPT_ = False
+    _REPRODUCE_ = True
 
     #! Turn on the profiling
     if _SP_PROFILE_:
@@ -90,22 +91,26 @@ def main():
                     n_layer+=1
                     continue
                 print(f"Register hook function for Conv Layer{n_layer}.")
-                hook = module.register_forward_hook(hook_fn(n_layer))
+                hook = module.register_forward_hook(hook_fn(n_layer, args))
                 hook_fn.results[n_layer] = [0]*(args.timestep+1)
                 n_layer+=1
 
-    best_accuracy = test(model, val_loader, criterion)
-    print(f'Before Finetuning, the original accuracy is: {best_accuracy}')
+    target_accuracy = test(model, val_loader, criterion, 0)
+    print(f'The original accuracy without mask is: {target_accuracy}')
+    polluted_accuracy = test(model, val_loader, criterion, args.n_mask)
+    print(f'The original accuracy with mask is: {polluted_accuracy}')
+    if _REPRODUCE_:
+        #! Create the plotting list for reproduce the Fig.11 in the paper for artifact evaluation.
+        plot_array = [target_accuracy, polluted_accuracy]
+
+    best_accuracy = 0
     for epoch_ in range(args.epoch):
         loss = 0
         accuracy = 0
         
-        loss = train(model, train_loader, criterion, optimizer, scheduler)
-        accuracy = test(model, val_loader, criterion)
-
-        comp1 = utils.print_nonzeros(model) #this shows sparsity!
-        print("Accuracy: ", accuracy)
-        print("Weight Sparsity: ", 100-comp1)
+        loss = train(model, train_loader, criterion, optimizer, scheduler, args.n_mask)
+        accuracy = test(model, val_loader, criterion, args.n_mask)
+        comp1 = utils.print_nonzeros(model) #this shows weight sparsity!
 
         if accuracy > best_accuracy:
             best_accuracy = accuracy
@@ -113,29 +118,41 @@ def main():
                 checkdir(f"{os.getcwd()}/finetune/{args.arch}/{args.dataset}/mask{args.n_mask}")
                 torch.save(model, f"{os.getcwd()}/finetune/{args.arch}/{args.dataset}/mask{args.n_mask}/final_dict.pth.tar")
             
-        print(f'Fine tune Epoch: {epoch_}/{args.epoch} Loss: {loss:.6f} Accuracy: {accuracy:.3f}% Best Accuracy: {best_accuracy:.3f}%')
+        print(f'Fine-tune Epoch: {epoch_}/{args.epoch} Weight Sparsity: {100-comp1:.3f} Loss: {loss:.6f} Accuracy: {accuracy:.3f}% Best Accuracy: {best_accuracy:.3f}%')
+        if _REPRODUCE_:
+            if epoch_ == 0:
+                plot_array.append(best_accuracy)
+            elif epoch_ == 4:
+                plot_array.append(best_accuracy)
+            elif epoch_ == 9:
+                plot_array.append(best_accuracy)
+                with open("FT_artifact.txt", "a") as text_file:
+                    for x in plot_array:
+                        text_file.write(f'{x},')
+                    text_file.write(f'\n')
+                break
         
     
     if _SP_PROFILE_:
-            print("------Profiling the silent neuron sparsity------")
-            network_sparsity_silent = 0.0
-            total_size = 0.0
-            for layer_name, result in hook_fn.weighted_layers.items():
-                total_size += result
-            for layer_name, result in hook_fn.results.items():
-                num_samples = len(val_loader)
-                profile_str = f"Average Percentage for spikes on Layer {layer_name}: "
-                for i in range(args.timestep+1):
-                    avg_spk = result[i] / num_samples
-                    profile_str += (f"[{i} spikes {round(avg_spk*100,2)}] ")
-                    if i == 0:
-                        network_sparsity_silent += (hook_fn.weighted_layers[layer_name]/total_size)*avg_spk 
-                print(profile_str)
-            print(f"Weight Spikes Sparsity Across Layers {round(network_sparsity_silent*100,2)}")
+        print("------Profiling the silent neuron sparsity------")
+        network_sparsity_silent = 0.0
+        total_size = 0.0
+        for layer_name, result in hook_fn.weighted_layers.items():
+            total_size += result
+        for layer_name, result in hook_fn.results.items():
+            num_samples = len(val_loader)
+            profile_str = f"Average Percentage for spikes on Layer {layer_name}: "
+            for i in range(args.timestep+1):
+                avg_spk = result[i] / num_samples
+                profile_str += (f"[{i} spikes {round(avg_spk*100,2)}] ")
+                if i == 0:
+                    network_sparsity_silent += (hook_fn.weighted_layers[layer_name]/total_size)*avg_spk 
+            print(profile_str)
+        print(f"Weight Spikes Sparsity Across Layers {round(network_sparsity_silent*100,2)}")
 
 
 
-def test(model, test_loader, criterion):
+def test(model, test_loader, criterion, n_mask):
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     model.eval()
     test_loss = 0
@@ -146,9 +163,9 @@ def test(model, test_loader, criterion):
             batch = data.shape[0]
             data, target = data.to(device), target.to(device)
             if args.arch == 'resnet19':
-                output = sum(model((data, args.n_mask)))
+                output = sum(model((data, n_mask)))
             else:
-                output = sum(model(data, args.n_mask)) #! mask is sending in here to filter out the neurons with low firing activity.
+                output = sum(model(data, n_mask)) #! mask is sending in here to filter out the neurons with low firing activity.
             reset_net(model)
             _,idx = output.data.max(1, keepdim=True)  # get the index of the max log-probability
             
@@ -159,7 +176,7 @@ def test(model, test_loader, criterion):
 
 
 
-def train(model, train_loader, criterion, optimizer, scheduler):
+def train(model, train_loader, criterion, optimizer, scheduler, n_mask):
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     model.train()
     EPS = 1e-6
@@ -171,9 +188,9 @@ def train(model, train_loader, criterion, optimizer, scheduler):
         imgs, targets = imgs.cuda(), targets.cuda()
         with amp.autocast():
             if args.arch == 'resnet19':
-                output = model((imgs, args.n_mask))
+                output = model((imgs, n_mask))
             else:
-                output = model(imgs, args.n_mask)
+                output = model(imgs, n_mask)
             train_loss = sum([criterion(s, targets) for s in output]) / args.timestep
         train_loss.backward()
 

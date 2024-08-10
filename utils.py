@@ -4,7 +4,7 @@ import numpy as np
 import torch.nn as nn
 import torchvision.transforms as transforms
 
-import config_profile
+
 
 class Cutout(object):
     """Randomly mask out one or more patches from an image.
@@ -129,9 +129,7 @@ def data_transforms(args):
         ])
     return train_transform, valid_transform
 
-
-args = config_profile.get_args()
-def hook_fn(layer_name):
+def hook_fn(layer_name, args):
     def _all_zero_check(module, input, output):
         p_spikes = input[0] #? The input is a tuple, second element is the device
         hook_fn.weighted_layers[layer_name] = p_spikes.shape[1]*p_spikes.shape[2]*p_spikes.shape[3]
