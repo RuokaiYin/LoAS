@@ -126,7 +126,7 @@ def main():
                 plot_array.append(best_accuracy)
             elif epoch_ == 9:
                 plot_array.append(best_accuracy)
-                with open("FT_artifact.txt", "a") as text_file:
+                with open("./artifact/Fig-11/FT_artifact.txt", "a") as text_file:
                     for x in plot_array:
                         text_file.write(f'{x},')
                     text_file.write(f'\n')
