@@ -1,0 +1,54 @@
+Layerwise result of alexnet with mode normal show below: 
+Layer_3
+Spikes/Neuron: 75.8296%
+Ratio of Silent Neurons: 63.1922%
+Weight sparsity of the layer: 98.8706%
+On alexnet, original spike sparsity: 81.195%
+On alexnet, under mode of normal, packed spike sparsity: 71.2559%
+On alexnet, the weight sparsity: 98.2635%
+
+Layerwise result of alexnet with mode strong show below: 
+Layer_3
+Spikes/Neuron: 75.8296%
+In the strong LoAS mode: Strong silent neuron ratios: 69.6719
+Weight sparsity of the layer: 98.8706%
+On alexnet, original spike sparsity: 81.195%
+On alexnet, under mode of strong, packed spike sparsity: 76.6834%
+On alexnet, the weight sparsity: 98.2635%
+
+Layerwise result of vgg16 with mode normal show below: 
+Layer_7
+Spikes/Neuron: 88.0731%
+Ratio of Silent Neurons: 76.5191%
+Weight sparsity of the layer: 96.7543%
+On vgg16, original spike sparsity: 82.325%
+On vgg16, under mode of normal, packed spike sparsity: 74.0898%
+On vgg16, the weight sparsity: 98.2279%
+
+Layerwise result of vgg16 with mode strong show below: 
+Layer_7
+Spikes/Neuron: 88.0731%
+In the strong LoAS mode: Strong silent neuron ratios: 86.8218
+Weight sparsity of the layer: 96.7543%
+On vgg16, original spike sparsity: 82.325%
+On vgg16, under mode of strong, packed spike sparsity: 79.581%
+On vgg16, the weight sparsity: 98.2279%
+
+Layerwise result of resnet19 with mode normal show below: 
+Layer_18
+Spikes/Neuron: 57.8529%
+Ratio of Silent Neurons: 51.4092%
+Weight sparsity of the layer: 99.674%
+On resnet19, original spike sparsity: 68.6667%
+On resnet19, under mode of normal, packed spike sparsity: 59.5935%
+On resnet19, the weight sparsity: 96.914%
+
+Layerwise result of resnet19 with mode strong show below: 
+Layer_18
+Spikes/Neuron: 57.8529%
+In the strong LoAS mode: Strong silent neuron ratios: 55.6478
+Weight sparsity of the layer: 99.674%
+On resnet19, original spike sparsity: 68.6667%
+On resnet19, under mode of strong, packed spike sparsity: 66.0811%
+On resnet19, the weight sparsity: 96.914%
+

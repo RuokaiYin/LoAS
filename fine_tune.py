@@ -76,7 +76,7 @@ def main():
 
     _SP_PROFILE_ = False
     _SAVE_CKPT_ = False
-    _REPRODUCE_ = True
+    _REPRODUCE_ = args.artifact
 
     #! Turn on the profiling
     if _SP_PROFILE_:

@@ -48,6 +48,7 @@ if __name__ == '__main__':
     parser.add_argument('--arch', type=str, default='vgg16', help='[vgg16, resnet19, alexnet]')
     parser.add_argument('--loas', type=str, default='normal', help='[normal, strong]')
     parser.add_argument('--store', action='store_true', help='Usin this key to store the post-processed matrices.')
+    parser.add_argument('--artifact', action='store_true', help='Usin this key to turn on the artifact mode.')
     args = parser.parse_args()
 
     PATH = f'./src_matrices/{args.arch}_final_matrices_dict.pth' #! Path where the matrices from the PyTorch model is stored
@@ -57,6 +58,7 @@ if __name__ == '__main__':
 
     loas_matrices_dict = {}
     mode = args.loas
+    artifact_str = "" #! For sotring the result string only for artifact purpose.
 
     #! Tranverse the PyTorch-based matrices to get the layerwise info.
     for k,v in matrices_dict.items():
@@ -79,12 +81,36 @@ if __name__ == '__main__':
         #! Below is for storing purpose only.
         loas_matrices_dict[k]['x'] = loas_spike_mat
         loas_matrices_dict[k]['w'] = v['w']
+        #! Here is for artifact purpose only.
+        if args.artifact:
+            #? We always have one less layer count here, since we are not considering the direct encoding layer (1st layer in the network)
+            if (args.arch == 'vgg16' and k == 'Layer_7') or (args.arch == 'resnet19' and k == 'Layer_18') or (args.arch == 'alexnet' and k == 'Layer_3'):
+                artifact_str += f'Layerwise result of {args.arch} with mode {mode} show below: \n'
+                artifact_str += k
+                artifact_str += '\n'
+                artifact_str += f'Spikes/Neuron: {round((1-torch.count_nonzero(inp_mat)/inp_mat.numel()).item()*100,4)}%\n'
+                pack_spike_mat = inp_mat.sum(dim=0)
+                if mode == 'normal':
+                    artifact_str += f'Ratio of Silent Neurons: {round((1-torch.count_nonzero(pack_spike_mat)/pack_spike_mat.numel()).item()*100,4)}%\n'
+                else:
+                    pack_spike_mat = pack_spike_mat*((pack_spike_mat!=1.0).float())
+                    artifact_str += f"In the strong LoAS mode: Strong silent neuron ratios: {round((1-torch.count_nonzero(pack_spike_mat)/pack_spike_mat.numel()).item()*100,4)}\n"
+                artifact_str += f'Weight sparsity of the layer: {round((1-torch.count_nonzero(weight_mat)/weight_mat.numel()).item()*100,4)}%\n'
 
     print("---- Successfully convert the PyTorch model into LoAS-packed Matrices. ----")
     print(f'Final Network Statics is printed out below: ')
     print(f"On {args.arch}, original spike sparsity: {round((1-(total_sp/total_sp_numel)).item()*100,4)}%")
     print(f"On {args.arch}, under mode of {mode}, packed spike sparsity: {round((1-(total_nz/total_numel)).item()*100,4)}%")
     print(f"On {args.arch}, the weight sparsity: {round((1-(total_w_nz/total_w_numel)).item()*100,4)}%")
+
+    if args.artifact:
+        artifact_str += (f"On {args.arch}, original spike sparsity: {round((1-(total_sp/total_sp_numel)).item()*100,4)}%\n")
+        artifact_str += (f"On {args.arch}, under mode of {mode}, packed spike sparsity: {round((1-(total_nz/total_numel)).item()*100,4)}%\n")
+        artifact_str += (f"On {args.arch}, the weight sparsity: {round((1-(total_w_nz/total_w_numel)).item()*100,4)}%\n")
+        with open("./tableII_artifact.txt", "a") as text_file:
+            text_file.write(artifact_str)
+            text_file.write('\n')
+
 
     if args.store:
         torch.save(loas_matrices_dict, f'./{args.arch}_final_matrices_dict_loas_{mode}.pth')

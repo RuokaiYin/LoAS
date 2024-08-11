@@ -22,6 +22,9 @@ def get_args():
     #! Default 0 means no maunally silencing the neuron.
     parser.add_argument('--n_mask', type=int, default=0, help='threshold of # of spikes to silent a neuron')
 
+    #! For artifact purpose
+    parser.add_argument('--artifact', action='store_true', help='Usin this key to turn on the artifact mode.')
+
     #! For ResNet19
     #* Batch size = 128, sgd, cosine, lr=5e-2, momentum=0.9, weight-decay=5e-4
     args = parser.parse_args()
