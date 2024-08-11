@@ -3,7 +3,7 @@ import argparse
 def get_args():
     parser = argparse.ArgumentParser("SNN-FineTune")
     parser.add_argument('--exp_name', type=str, default='snn_pruning', help='experiment name')
-    parser.add_argument('--data_dir', type=str, default='/gpfs/gibbs/project/panda/shared', help='path to the dataset')
+    parser.add_argument('--data_dir', type=str, default='./dataset', help='path to the dataset')
     parser.add_argument('--dataset', type=str, default='cifar10', help='[cifar10]')
     parser.add_argument('--seed', default=428, type=int)
 

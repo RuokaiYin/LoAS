@@ -94,7 +94,7 @@ if __name__ == '__main__':
                     artifact_str += f'Ratio of Silent Neurons: {round((1-torch.count_nonzero(pack_spike_mat)/pack_spike_mat.numel()).item()*100,4)}%\n'
                 else:
                     pack_spike_mat = pack_spike_mat*((pack_spike_mat!=1.0).float())
-                    artifact_str += f"In the strong LoAS mode: Strong silent neuron ratios: {round((1-torch.count_nonzero(pack_spike_mat)/pack_spike_mat.numel()).item()*100,4)}\n"
+                    artifact_str += f"In the strong LoAS mode: Strong silent neuron ratios: {round((1-torch.count_nonzero(pack_spike_mat)/pack_spike_mat.numel()).item()*100,4)}%\n"
                 artifact_str += f'Weight sparsity of the layer: {round((1-torch.count_nonzero(weight_mat)/weight_mat.numel()).item()*100,4)}%\n'
 
     print("---- Successfully convert the PyTorch model into LoAS-packed Matrices. ----")

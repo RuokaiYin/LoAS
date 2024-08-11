@@ -32,9 +32,9 @@ def main():
 
     #! Feel free to extend this to new datasets
     if args.dataset == 'cifar10':
-        trainset = torchvision.datasets.CIFAR10(root=args.data_dir, train=True, download=False, transform=train_transform)
+        trainset = torchvision.datasets.CIFAR10(root=args.data_dir, train=True, download=True, transform=train_transform)
         train_loader = torch.utils.data.DataLoader(trainset, batch_size=args.batch_size, shuffle=True, pin_memory=True, num_workers=4)
-        valset = torchvision.datasets.CIFAR10(root=args.data_dir, train=False, download=False, transform=valid_transform)
+        valset = torchvision.datasets.CIFAR10(root=args.data_dir, train=False, download=True, transform=valid_transform)
         val_loader = torch.utils.data.DataLoader(valset, batch_size=args.batch_size, shuffle=False, pin_memory=True, num_workers=4)
         n_class = 10
 

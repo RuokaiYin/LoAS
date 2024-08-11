@@ -5,7 +5,7 @@ def get_args():
     parser = argparse.ArgumentParser("LoAS-Profile-SNN")
     
     #! Manually set your own data_dir
-    parser.add_argument('--data_dir', type=str, default='/gpfs/gibbs/project/panda/shared', help='path to the dataset')
+    parser.add_argument('--data_dir', type=str, default='./dataset', help='path to the dataset')
     
     #! Set to different values if required.
     parser.add_argument('--dataset', type=str, default='cifar10', help='[cifar10]')

@@ -34,9 +34,9 @@ def main():
     train_transform, valid_transform = data_transforms(args)
 
     if args.dataset == 'cifar10':
-        trainset = torchvision.datasets.CIFAR10(root='/gpfs/gibbs/project/panda/shared', train=True, download=False, transform=train_transform)
+        trainset = torchvision.datasets.CIFAR10(root='./dataset', train=True, download=True, transform=train_transform)
         train_loader = torch.utils.data.DataLoader(trainset, batch_size=args.batch_size, shuffle=True, pin_memory=True, num_workers=4)
-        valset = torchvision.datasets.CIFAR10(root='/gpfs/gibbs/project/panda/shared', train=False, download=False, transform=valid_transform)
+        valset = torchvision.datasets.CIFAR10(root='./dataset', train=False, download=True, transform=valid_transform)
         val_loader = torch.utils.data.DataLoader(valset, batch_size=args.batch_size, shuffle=False, pin_memory=True, num_workers=4)
         n_class = 10
 
