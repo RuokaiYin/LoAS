@@ -64,7 +64,7 @@ def main():
                     n_layer+=1
                     continue
                 print(f"Register hook function for Conv Layer{n_layer}.")
-                hook = module.register_forward_hook(hook_fn(n_layer))
+                hook = module.register_forward_hook(hook_fn(n_layer, args))
                 hook_fn.results[n_layer] = [0]*(args.timestep+1)
                 n_layer+=1
         
