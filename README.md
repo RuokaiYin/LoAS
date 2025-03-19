@@ -1,5 +1,10 @@
 # LoAS MICRO 2024
 
+## 2025 Mar:
+I just uploaded the sub-directory for generating the LTH-based prunned SNNs. I saw the latest HPCA2025 SNN accelerator work referred our pruning framework, so I think it's a good idea to equip this repo with the purning generation codes.
+
+Please find the codes to prune the SNNs in the sub-directory of ``pruning_gen``. I have tested the codes, there should be no issue to run the codes and generate the prunned SNNs. Please go inside the sub-directory to find more details. Please let me know if you need any help!
+
 ## 2024 Aug:
 We just upload the sub-directory for the artifact evaluation. Feel free to go inside the sub-directory of ``artifact`` for more information!
 
@@ -38,4 +43,16 @@ spikingjelly 0.0.0.0.12
 More details to come soon.
 
 
+## Citing
+
+If you find the above code is useful for your research, please use the following bibtex to cite us,
+```bibtex
+@inproceedings{yin2024loas,
+  title={LoAS: Fully Temporal-Parallel Dataflow for Dual-Sparse Spiking Neural Networks},
+  author={Yin, Ruokai and Kim, Youngeun and Wu, Di and Panda, Priyadarshini},
+  booktitle={2024 57th IEEE/ACM International Symposium on Microarchitecture (MICRO)},
+  pages={1107--1121},
+  year={2024},
+  organization={IEEE}
+}
 
