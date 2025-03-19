@@ -1,0 +1,228 @@
+Namespace(exp_name='snn_pruning', data_dir='/gpfs/gibbs/project/panda/shared/', dataset='cifar10', seed=1234, timestep=4, batch_size=512, arch='resnet19', optimizer='sgd', scheduler='cosine', learning_rate=0.3, momentum=0.9, weight_decay=0.0005, prune_percent=25, prune_iterations=15, round=4, pruning_scope='global', epoch=150, valid_freq=10, print_freq=10, rewinding_epoch=20)
+Namespace(exp_name='snn_pruning', data_dir='/gpfs/gibbs/project/panda/shared/', dataset='cifar10', seed=1234, timestep=4, batch_size=512, arch='resnet19', optimizer='sgd', scheduler='cosine', learning_rate=0.3, momentum=0.9, weight_decay=0.0005, prune_percent=25, prune_iterations=15, round=4, pruning_scope='global', epoch=150, valid_freq=10, print_freq=10, rewinding_epoch=20)
+Files already downloaded and verified
+Files already downloaded and verified
+
+--- Pruning Level [round4:0/15]: ---
+alive: 12619967, pruned : 1, total: 12619968, Compression rate :       1.00x  (  0.00% pruned)
+Train Epoch: 9/150 Loss: 2.038095 Accuracy: 27.86% Best Accuracy: 27.86%
+Train Epoch: 19/150 Loss: 1.770352 Accuracy: 34.64% Best Accuracy: 34.64%
+find laterewinding weight--------
+Train Epoch: 29/150 Loss: 1.686651 Accuracy: 35.19% Best Accuracy: 35.19%
+Train Epoch: 39/150 Loss: 1.561906 Accuracy: 46.17% Best Accuracy: 46.17%
+Train Epoch: 49/150 Loss: 1.421431 Accuracy: 53.37% Best Accuracy: 53.37%
+Train Epoch: 59/150 Loss: 1.288727 Accuracy: 58.81% Best Accuracy: 58.81%
+Train Epoch: 69/150 Loss: 1.213480 Accuracy: 61.45% Best Accuracy: 61.45%
+Train Epoch: 79/150 Loss: 1.025520 Accuracy: 64.79% Best Accuracy: 64.79%
+Train Epoch: 89/150 Loss: 1.055836 Accuracy: 65.30% Best Accuracy: 65.30%
+Train Epoch: 99/150 Loss: 1.051500 Accuracy: 66.69% Best Accuracy: 66.69%
+Train Epoch: 109/150 Loss: 0.961257 Accuracy: 68.74% Best Accuracy: 68.74%
+Train Epoch: 119/150 Loss: 0.839786 Accuracy: 70.05% Best Accuracy: 70.05%
+Train Epoch: 129/150 Loss: 0.882829 Accuracy: 70.98% Best Accuracy: 70.98%
+Train Epoch: 139/150 Loss: 0.907166 Accuracy: 70.51% Best Accuracy: 70.98%
+Train Epoch: 149/150 Loss: 0.917892 Accuracy: 70.93% Best Accuracy: 70.98%
+Round best accuracy:  70.98
+
+--- Pruning Level [round4:1/15]: ---
+alive: 9464976, pruned : 3154992, total: 12619968, Compression rate :       1.33x  ( 25.00% pruned)
+Train Epoch: 9/150 Loss: 1.628570 Accuracy: 41.23% Best Accuracy: 41.23%
+Train Epoch: 19/150 Loss: 1.453868 Accuracy: 45.01% Best Accuracy: 45.01%
+Train Epoch: 29/150 Loss: 1.302219 Accuracy: 56.93% Best Accuracy: 56.93%
+Train Epoch: 39/150 Loss: 1.170020 Accuracy: 63.45% Best Accuracy: 63.45%
+Train Epoch: 49/150 Loss: 1.061895 Accuracy: 63.07% Best Accuracy: 63.45%
+Train Epoch: 59/150 Loss: 1.041370 Accuracy: 68.48% Best Accuracy: 68.48%
+Train Epoch: 69/150 Loss: 0.956006 Accuracy: 71.53% Best Accuracy: 71.53%
+Train Epoch: 79/150 Loss: 0.702366 Accuracy: 73.22% Best Accuracy: 73.22%
+Train Epoch: 89/150 Loss: 0.841884 Accuracy: 71.19% Best Accuracy: 73.22%
+Train Epoch: 99/150 Loss: 0.870769 Accuracy: 74.27% Best Accuracy: 74.27%
+Train Epoch: 109/150 Loss: 0.743238 Accuracy: 75.10% Best Accuracy: 75.10%
+Train Epoch: 119/150 Loss: 0.663810 Accuracy: 75.16% Best Accuracy: 75.16%
+Train Epoch: 129/150 Loss: 0.764922 Accuracy: 75.74% Best Accuracy: 75.74%
+Round best accuracy:  75.74
+
+--- Pruning Level [round4:2/15]: ---
+alive: 7098732, pruned : 5521236, total: 12619968, Compression rate :       1.78x  ( 43.75% pruned)
+Train Epoch: 9/150 Loss: 1.610260 Accuracy: 42.37% Best Accuracy: 42.37%
+Train Epoch: 19/150 Loss: 1.543883 Accuracy: 42.69% Best Accuracy: 42.69%
+Train Epoch: 29/150 Loss: 1.109247 Accuracy: 58.08% Best Accuracy: 58.08%
+Train Epoch: 39/150 Loss: 1.002320 Accuracy: 63.98% Best Accuracy: 63.98%
+Train Epoch: 49/150 Loss: 0.936379 Accuracy: 68.49% Best Accuracy: 68.49%
+Train Epoch: 59/150 Loss: 0.941918 Accuracy: 69.90% Best Accuracy: 69.90%
+Train Epoch: 69/150 Loss: 0.876971 Accuracy: 73.20% Best Accuracy: 73.20%
+Train Epoch: 79/150 Loss: 0.920114 Accuracy: 76.21% Best Accuracy: 76.21%
+Train Epoch: 89/150 Loss: 0.764242 Accuracy: 77.42% Best Accuracy: 77.42%
+Train Epoch: 99/150 Loss: 0.699856 Accuracy: 78.43% Best Accuracy: 78.43%
+Train Epoch: 109/150 Loss: 0.664458 Accuracy: 78.67% Best Accuracy: 78.67%
+Train Epoch: 119/150 Loss: 0.656843 Accuracy: 79.24% Best Accuracy: 79.24%
+Train Epoch: 129/150 Loss: 0.632767 Accuracy: 79.70% Best Accuracy: 79.70%
+Round best accuracy:  79.7
+
+--- Pruning Level [round4:3/15]: ---
+alive: 5324049, pruned : 7295919, total: 12619968, Compression rate :       2.37x  ( 57.81% pruned)
+Train Epoch: 9/150 Loss: 1.464754 Accuracy: 40.33% Best Accuracy: 40.33%
+Train Epoch: 19/150 Loss: 1.224962 Accuracy: 58.20% Best Accuracy: 58.20%
+Train Epoch: 29/150 Loss: 1.076541 Accuracy: 66.51% Best Accuracy: 66.51%
+Train Epoch: 39/150 Loss: 0.902716 Accuracy: 69.47% Best Accuracy: 69.47%
+Train Epoch: 49/150 Loss: 0.895548 Accuracy: 71.86% Best Accuracy: 71.86%
+Train Epoch: 59/150 Loss: 0.772815 Accuracy: 76.62% Best Accuracy: 76.62%
+Train Epoch: 69/150 Loss: 0.772122 Accuracy: 77.14% Best Accuracy: 77.14%
+Train Epoch: 79/150 Loss: 0.652938 Accuracy: 79.47% Best Accuracy: 79.47%
+Train Epoch: 89/150 Loss: 0.666232 Accuracy: 79.77% Best Accuracy: 79.77%
+Train Epoch: 99/150 Loss: 0.575600 Accuracy: 81.40% Best Accuracy: 81.40%
+Train Epoch: 109/150 Loss: 0.669750 Accuracy: 81.42% Best Accuracy: 81.42%
+Train Epoch: 119/150 Loss: 0.420320 Accuracy: 81.56% Best Accuracy: 81.56%
+Train Epoch: 129/150 Loss: 0.523772 Accuracy: 82.33% Best Accuracy: 82.33%
+Round best accuracy:  82.33
+
+--- Pruning Level [round4:4/15]: ---
+alive: 3993037, pruned : 8626931, total: 12619968, Compression rate :       3.16x  ( 68.36% pruned)
+Train Epoch: 9/150 Loss: 1.477319 Accuracy: 52.02% Best Accuracy: 52.02%
+Train Epoch: 19/150 Loss: 1.202289 Accuracy: 65.03% Best Accuracy: 65.03%
+Train Epoch: 29/150 Loss: 0.942532 Accuracy: 69.03% Best Accuracy: 69.03%
+Train Epoch: 39/150 Loss: 0.696103 Accuracy: 76.07% Best Accuracy: 76.07%
+Train Epoch: 49/150 Loss: 0.637934 Accuracy: 76.13% Best Accuracy: 76.13%
+Train Epoch: 59/150 Loss: 0.774404 Accuracy: 76.20% Best Accuracy: 76.20%
+Train Epoch: 69/150 Loss: 0.679654 Accuracy: 80.73% Best Accuracy: 80.73%
+Train Epoch: 79/150 Loss: 0.588358 Accuracy: 81.59% Best Accuracy: 81.59%
+Train Epoch: 89/150 Loss: 0.478387 Accuracy: 82.30% Best Accuracy: 82.30%
+Train Epoch: 99/150 Loss: 0.516526 Accuracy: 83.19% Best Accuracy: 83.19%
+Train Epoch: 109/150 Loss: 0.494278 Accuracy: 84.06% Best Accuracy: 84.06%
+Train Epoch: 119/150 Loss: 0.464890 Accuracy: 83.81% Best Accuracy: 84.06%
+Train Epoch: 129/150 Loss: 0.421488 Accuracy: 83.81% Best Accuracy: 84.06%
+Round best accuracy:  84.06
+
+--- Pruning Level [round4:5/15]: ---
+alive: 2994778, pruned : 9625190, total: 12619968, Compression rate :       4.21x  ( 76.27% pruned)
+Train Epoch: 9/150 Loss: 1.279157 Accuracy: 49.64% Best Accuracy: 49.64%
+Train Epoch: 19/150 Loss: 1.072815 Accuracy: 68.35% Best Accuracy: 68.35%
+Train Epoch: 29/150 Loss: 0.824785 Accuracy: 72.47% Best Accuracy: 72.47%
+Train Epoch: 39/150 Loss: 0.671680 Accuracy: 76.12% Best Accuracy: 76.12%
+Train Epoch: 49/150 Loss: 0.628356 Accuracy: 77.71% Best Accuracy: 77.71%
+Train Epoch: 59/150 Loss: 0.701534 Accuracy: 80.57% Best Accuracy: 80.57%
+Train Epoch: 69/150 Loss: 0.570311 Accuracy: 82.28% Best Accuracy: 82.28%
+Train Epoch: 79/150 Loss: 0.439568 Accuracy: 83.03% Best Accuracy: 83.03%
+Train Epoch: 89/150 Loss: 0.525171 Accuracy: 84.53% Best Accuracy: 84.53%
+Train Epoch: 99/150 Loss: 0.443449 Accuracy: 83.65% Best Accuracy: 84.53%
+Train Epoch: 109/150 Loss: 0.467980 Accuracy: 84.80% Best Accuracy: 84.80%
+Train Epoch: 119/150 Loss: 0.347558 Accuracy: 85.51% Best Accuracy: 85.51%
+Train Epoch: 129/150 Loss: 0.443134 Accuracy: 85.62% Best Accuracy: 85.62%
+Round best accuracy:  85.62
+
+--- Pruning Level [round4:6/15]: ---
+alive: 2246084, pruned : 10373884, total: 12619968, Compression rate :       5.62x  ( 82.20% pruned)
+Train Epoch: 9/150 Loss: 1.120372 Accuracy: 56.62% Best Accuracy: 56.62%
+Train Epoch: 19/150 Loss: 0.778413 Accuracy: 72.28% Best Accuracy: 72.28%
+Train Epoch: 29/150 Loss: 0.715243 Accuracy: 76.02% Best Accuracy: 76.02%
+Train Epoch: 39/150 Loss: 0.584914 Accuracy: 78.10% Best Accuracy: 78.10%
+Train Epoch: 49/150 Loss: 0.476512 Accuracy: 81.32% Best Accuracy: 81.32%
+Train Epoch: 59/150 Loss: 0.433203 Accuracy: 82.46% Best Accuracy: 82.46%
+Train Epoch: 69/150 Loss: 0.441927 Accuracy: 83.93% Best Accuracy: 83.93%
+Train Epoch: 79/150 Loss: 0.388263 Accuracy: 85.39% Best Accuracy: 85.39%
+Train Epoch: 89/150 Loss: 0.490997 Accuracy: 85.24% Best Accuracy: 85.39%
+Train Epoch: 99/150 Loss: 0.426532 Accuracy: 85.77% Best Accuracy: 85.77%
+Train Epoch: 109/150 Loss: 0.346874 Accuracy: 86.65% Best Accuracy: 86.65%
+Train Epoch: 119/150 Loss: 0.371919 Accuracy: 86.92% Best Accuracy: 86.92%
+Train Epoch: 129/150 Loss: 0.320693 Accuracy: 87.07% Best Accuracy: 87.07%
+Round best accuracy:  87.07
+
+--- Pruning Level [round4:7/15]: ---
+alive: 1684563, pruned : 10935405, total: 12619968, Compression rate :       7.49x  ( 86.65% pruned)
+Train Epoch: 9/150 Loss: 0.942832 Accuracy: 68.08% Best Accuracy: 68.08%
+Train Epoch: 19/150 Loss: 0.773706 Accuracy: 76.96% Best Accuracy: 76.96%
+Train Epoch: 29/150 Loss: 0.599930 Accuracy: 80.94% Best Accuracy: 80.94%
+Train Epoch: 39/150 Loss: 0.537247 Accuracy: 84.34% Best Accuracy: 84.34%
+Train Epoch: 49/150 Loss: 0.516055 Accuracy: 82.52% Best Accuracy: 84.34%
+Train Epoch: 59/150 Loss: 0.457118 Accuracy: 85.19% Best Accuracy: 85.19%
+Train Epoch: 69/150 Loss: 0.455729 Accuracy: 85.23% Best Accuracy: 85.23%
+Train Epoch: 79/150 Loss: 0.449483 Accuracy: 86.22% Best Accuracy: 86.22%
+Train Epoch: 89/150 Loss: 0.337916 Accuracy: 86.37% Best Accuracy: 86.37%
+Train Epoch: 99/150 Loss: 0.343675 Accuracy: 87.19% Best Accuracy: 87.19%
+Train Epoch: 109/150 Loss: 0.368593 Accuracy: 87.56% Best Accuracy: 87.56%
+Train Epoch: 119/150 Loss: 0.405533 Accuracy: 87.36% Best Accuracy: 87.56%
+Train Epoch: 129/150 Loss: 0.267986 Accuracy: 87.61% Best Accuracy: 87.61%
+Round best accuracy:  87.61
+
+--- Pruning Level [round4:8/15]: ---
+alive: 1263423, pruned : 11356545, total: 12619968, Compression rate :       9.99x  ( 89.99% pruned)
+Train Epoch: 9/150 Loss: 0.913276 Accuracy: 63.05% Best Accuracy: 63.05%
+Train Epoch: 19/150 Loss: 0.629648 Accuracy: 72.95% Best Accuracy: 72.95%
+Train Epoch: 29/150 Loss: 0.541837 Accuracy: 76.19% Best Accuracy: 76.19%
+Train Epoch: 39/150 Loss: 0.528724 Accuracy: 84.18% Best Accuracy: 84.18%
+Train Epoch: 49/150 Loss: 0.401216 Accuracy: 84.96% Best Accuracy: 84.96%
+Train Epoch: 59/150 Loss: 0.461647 Accuracy: 84.70% Best Accuracy: 84.96%
+Train Epoch: 69/150 Loss: 0.439520 Accuracy: 86.65% Best Accuracy: 86.65%
+Train Epoch: 79/150 Loss: 0.310127 Accuracy: 86.15% Best Accuracy: 86.65%
+Train Epoch: 89/150 Loss: 0.366575 Accuracy: 87.49% Best Accuracy: 87.49%
+Train Epoch: 99/150 Loss: 0.258261 Accuracy: 87.62% Best Accuracy: 87.62%
+Train Epoch: 109/150 Loss: 0.306128 Accuracy: 87.90% Best Accuracy: 87.90%
+Train Epoch: 119/150 Loss: 0.306164 Accuracy: 88.06% Best Accuracy: 88.06%
+Train Epoch: 129/150 Loss: 0.281576 Accuracy: 87.95% Best Accuracy: 88.06%
+Round best accuracy:  88.06
+
+--- Pruning Level [round4:9/15]: ---
+alive: 947568, pruned : 11672400, total: 12619968, Compression rate :      13.32x  ( 92.49% pruned)
+Train Epoch: 9/150 Loss: 0.717418 Accuracy: 66.35% Best Accuracy: 66.35%
+Train Epoch: 19/150 Loss: 0.586979 Accuracy: 75.44% Best Accuracy: 75.44%
+Train Epoch: 29/150 Loss: 0.471215 Accuracy: 84.46% Best Accuracy: 84.46%
+Train Epoch: 39/150 Loss: 0.389920 Accuracy: 85.45% Best Accuracy: 85.45%
+Train Epoch: 49/150 Loss: 0.404482 Accuracy: 85.38% Best Accuracy: 85.45%
+Train Epoch: 59/150 Loss: 0.398773 Accuracy: 86.53% Best Accuracy: 86.53%
+Train Epoch: 69/150 Loss: 0.434697 Accuracy: 86.41% Best Accuracy: 86.53%
+Train Epoch: 79/150 Loss: 0.353923 Accuracy: 87.46% Best Accuracy: 87.46%
+Train Epoch: 89/150 Loss: 0.360784 Accuracy: 87.92% Best Accuracy: 87.92%
+Train Epoch: 99/150 Loss: 0.401288 Accuracy: 88.22% Best Accuracy: 88.22%
+Train Epoch: 109/150 Loss: 0.329421 Accuracy: 88.17% Best Accuracy: 88.22%
+Train Epoch: 119/150 Loss: 0.294560 Accuracy: 88.08% Best Accuracy: 88.22%
+Train Epoch: 129/150 Loss: 0.394081 Accuracy: 88.63% Best Accuracy: 88.63%
+Round best accuracy:  88.63
+
+--- Pruning Level [round4:10/15]: ---
+alive: 710676, pruned : 11909292, total: 12619968, Compression rate :      17.76x  ( 94.37% pruned)
+Train Epoch: 9/150 Loss: 0.692982 Accuracy: 76.37% Best Accuracy: 76.37%
+Train Epoch: 19/150 Loss: 0.544507 Accuracy: 83.30% Best Accuracy: 83.30%
+Train Epoch: 29/150 Loss: 0.574552 Accuracy: 84.44% Best Accuracy: 84.44%
+Train Epoch: 39/150 Loss: 0.483413 Accuracy: 84.35% Best Accuracy: 84.44%
+Train Epoch: 49/150 Loss: 0.340490 Accuracy: 86.46% Best Accuracy: 86.46%
+Train Epoch: 59/150 Loss: 0.425498 Accuracy: 86.86% Best Accuracy: 86.86%
+Train Epoch: 69/150 Loss: 0.335689 Accuracy: 87.40% Best Accuracy: 87.40%
+Train Epoch: 79/150 Loss: 0.305375 Accuracy: 87.92% Best Accuracy: 87.92%
+Train Epoch: 89/150 Loss: 0.309014 Accuracy: 88.14% Best Accuracy: 88.14%
+Train Epoch: 99/150 Loss: 0.317010 Accuracy: 88.20% Best Accuracy: 88.20%
+Train Epoch: 109/150 Loss: 0.365442 Accuracy: 88.45% Best Accuracy: 88.45%
+Train Epoch: 119/150 Loss: 0.260432 Accuracy: 88.63% Best Accuracy: 88.63%
+Train Epoch: 129/150 Loss: 0.263017 Accuracy: 88.45% Best Accuracy: 88.63%
+Round best accuracy:  88.63
+
+--- Pruning Level [round4:11/15]: ---
+alive: 533007, pruned : 12086961, total: 12619968, Compression rate :      23.68x  ( 95.78% pruned)
+Train Epoch: 9/150 Loss: 0.762820 Accuracy: 73.99% Best Accuracy: 73.99%
+Train Epoch: 19/150 Loss: 0.570758 Accuracy: 80.50% Best Accuracy: 80.50%
+Train Epoch: 29/150 Loss: 0.393193 Accuracy: 83.49% Best Accuracy: 83.49%
+Train Epoch: 39/150 Loss: 0.518904 Accuracy: 85.13% Best Accuracy: 85.13%
+Train Epoch: 49/150 Loss: 0.408545 Accuracy: 86.44% Best Accuracy: 86.44%
+Train Epoch: 59/150 Loss: 0.446856 Accuracy: 86.64% Best Accuracy: 86.64%
+Train Epoch: 69/150 Loss: 0.440708 Accuracy: 86.77% Best Accuracy: 86.77%
+Train Epoch: 79/150 Loss: 0.306678 Accuracy: 88.09% Best Accuracy: 88.09%
+Train Epoch: 89/150 Loss: 0.412175 Accuracy: 88.11% Best Accuracy: 88.11%
+Train Epoch: 99/150 Loss: 0.397865 Accuracy: 88.45% Best Accuracy: 88.45%
+Train Epoch: 109/150 Loss: 0.304172 Accuracy: 88.05% Best Accuracy: 88.45%
+Train Epoch: 119/150 Loss: 0.368526 Accuracy: 88.45% Best Accuracy: 88.45%
+Train Epoch: 129/150 Loss: 0.302327 Accuracy: 88.26% Best Accuracy: 88.45%
+Round best accuracy:  88.45
+
+--- Pruning Level [round4:12/15]: ---
+alive: 399756, pruned : 12220212, total: 12619968, Compression rate :      31.57x  ( 96.83% pruned)
+Train Epoch: 9/150 Loss: 0.806932 Accuracy: 74.32% Best Accuracy: 74.32%
+Train Epoch: 19/150 Loss: 0.580227 Accuracy: 81.72% Best Accuracy: 81.72%
+Train Epoch: 29/150 Loss: 0.522833 Accuracy: 84.03% Best Accuracy: 84.03%
+Train Epoch: 39/150 Loss: 0.446893 Accuracy: 84.84% Best Accuracy: 84.84%
+Train Epoch: 49/150 Loss: 0.465200 Accuracy: 85.72% Best Accuracy: 85.72%
+Train Epoch: 59/150 Loss: 0.414372 Accuracy: 85.16% Best Accuracy: 85.72%
+Train Epoch: 69/150 Loss: 0.388282 Accuracy: 87.15% Best Accuracy: 87.15%
+Train Epoch: 79/150 Loss: 0.371710 Accuracy: 87.74% Best Accuracy: 87.74%
+Train Epoch: 89/150 Loss: 0.380762 Accuracy: 87.64% Best Accuracy: 87.74%
+Train Epoch: 99/150 Loss: 0.259989 Accuracy: 88.00% Best Accuracy: 88.00%
+Train Epoch: 109/150 Loss: 0.375325 Accuracy: 88.03% Best Accuracy: 88.03%
+Train Epoch: 119/150 Loss: 0.385544 Accuracy: 87.65% Best Accuracy: 88.03%
+Train Epoch: 129/150 Loss: 0.335560 Accuracy: 88.20% Best Accuracy: 88.20%
+Round best accuracy:  88.2
